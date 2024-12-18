@@ -14,3 +14,4 @@ SM8175|as|ass|as@.com|0128250398|as|Sales Manager
 SM2475|test|123123123123|123123@amil.com|1234567890|123|Sales Manager
 PM5144|asd|123123123131231|asd@mai./com|1234567890|123|Purchase Manager
 SM3772|trolling|172t34017540-91274601|123@maillcom|1231231233|123|Sales Manager
+IM8843|jenn|01928736455|asd@gmail.com|0918273645|asd|Inventory Manager

@@ -91,7 +91,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
 
         // Optionally update the supplier input panel or table with the new supplier
         supplierInputPanel1.addSupplier(supplierId, name, address, email, phone);
-        writeToLog(loggedInUser," | Supplier added | ","SUCCESS");
+        writeToLog(loggedInUser," | Supplier created | ","SUCCESS");
 
         // Clear the fields after saving
         clearFields();
@@ -131,6 +131,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
         */ 
         // Call the controller to update the supplier
         supplierController.updateSupplier(supplierId, name, address, phone, email);
+        writeToLog(loggedInUser," | Supplier updated | ","SUCCESS");
 
         // Reload the suppliers and refresh the UI
         loadSupplier();
@@ -147,6 +148,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
 
             // Remove the supplier from the service
             supplierController.deleteSupplier(supplierId); // Assuming this method exists
+            writeToLog(loggedInUser," | Supplier deleted | ","SUCCESS");
 
             // Clear the supplier input panel or table
             supplierInputPanel1.clearSupplier();
@@ -174,7 +176,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
     
     public void writeToLog(String uniqueId, String description, String status) {
         try {
-                File logFilePath = new File("log.txt");
+                File logFilePath = new File("src/Databases/Log.txt");
                 int counter = 1;
 
                 // Create log.txt if it doesn't exist

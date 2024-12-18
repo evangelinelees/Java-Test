@@ -14,3 +14,6 @@ I0018|Chinese|yellow and hard working|5|888.00|Fast
 I0019|Chinese|yellow and hard working|5|888.00|Fast
 I0020|Chinese|yellow and hard working|5|888.00|Select a Supplier
 I0021|Chinese|yellow and hard working|5|888.00|Fast
+I0022|Chinese|yellow and|5|888.00|Select a Supplier
+I0023|Chinese|yellow and|5|888.00|Select a Supplier
+I0024|nigga|yellow and rich|5|10.00|Select a Supplier
