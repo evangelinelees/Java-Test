@@ -1,0 +1,16 @@
+PM8484|Alvin Khoo Jian Feng |031111101114|jenn@gmail.com|01111407971|12345|Purchase Manager
+SM2804|jenn|123456789010|jchok2003@gmail.com|01312453647|asd123|Sales Manager
+SM5921|alvin|761007105160|jchok2003@gmail.com|01111407971|asd123|Sales Manager
+PM2283|angie|060808105162|test@gmail.com|0132435678|asdfghj|Purchase Manager
+SM2663|evangeline|09876543212|test@gmail.com|0111148376|12345|Sales Manager
+SM5624|kyt|09876541324|test@gmail.com|0123457615|1234|Sales Manager
+SM6286|angie|761007105890|angie@gmail.com|0126307971|1234567|Sales Manager
+SM7743|eros|098765431425|eros@gmail.com|0123476524|asd|Sales Manager
+SM5336|zoey|098987651325|z@gmail.com|0987665413|asd|Sales Manager
+SM3810|jenn|098765432123|asd@gmail.com|0123819697|asd|Sales Manager
+SM7330|Jasper|041105120625|jasperchin@gmail.com|0128250398|123|Sales Manager
+SM2665|as|as|as@.com|0128250398|as|Sales Manager
+SM8175|as|ass|as@.com|0128250398|as|Sales Manager
+SM2475|test|123123123123|123123@amil.com|1234567890|123|Sales Manager
+PM5144|asd|123123123131231|asd@mai./com|1234567890|123|Purchase Manager
+SM3772|trolling|172t34017540-91274601|123@maillcom|1231231233|123|Sales Manager
