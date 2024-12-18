@@ -19,13 +19,14 @@ import javax.swing.table.DefaultTableModel;
  * @author vroom
  */
 public class SalesReportPage_SM extends javax.swing.JFrame {
-
+public String loggedInUser;
     /**
      * Creates new form SalesReportPage_SM
      */
     public SalesReportPage_SM() {
         initComponents();
         loadItemsToTable();
+        this.loggedInUser = loggedInUser;
     }
     
     
@@ -33,7 +34,7 @@ public class SalesReportPage_SM extends javax.swing.JFrame {
     private void loadItemsToTable() {
     try {
         // Path to the DAILY.txt file
-        String filePath = "DAILY.txt";  // Replace with the actual path to your file
+        String filePath = "src/Databases/DAILY.txt";  // Replace with the actual path to your file
         // Get the table model
         try ( // Open the file for reading
                 java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filePath))) {
@@ -72,7 +73,7 @@ public class SalesReportPage_SM extends javax.swing.JFrame {
     private void displayMostToLeastItemSold() {
     try {
         // Read sales data from the file
-        List<Sale> sales = SalesReport.readSalesFile("DAILY.txt");
+        List<Sale> sales = SalesReport.readSalesFile("src/Databases/DAILY.txt");
 
         // Create a map to store the total quantity sold for each item
         Map<String, Integer> itemSalesCount = new HashMap<>();
@@ -110,7 +111,7 @@ public class SalesReportPage_SM extends javax.swing.JFrame {
     private void displayMostToLeastProfitMonth() {
     try {
         // Read sales data from the file
-        List<Sale> sales = SalesReport.readSalesFile("DAILY.txt");
+        List<Sale> sales = SalesReport.readSalesFile("src/Databases/DAILY.txt");
 
         // Create a map to store the total profit for each month (1 - January, 12 - December)
         Map<Integer, Double> monthlyProfit = new HashMap<>();
@@ -317,7 +318,7 @@ private String getMonthName(int monthNumber) {
     private void barGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barGraphActionPerformed
      try {
         // Read sales data from the file
-        List<Sale> sales = SalesReport.readSalesFile("DAILY.txt");
+        List<Sale> sales = SalesReport.readSalesFile("src/Databases/DAILY.txt");
 
         // Aggregate sales by date
         Map<String, Double> dailySales = SalesAggregator.getDailySales(sales);
@@ -351,7 +352,7 @@ private String getMonthName(int monthNumber) {
     }//GEN-LAST:event_barGraphActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-    SalesManagerMainPage SMM = new SalesManagerMainPage();
+    SalesManagerMainPage SMM = new SalesManagerMainPage(loggedInUser);
     SMM.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
@@ -359,7 +360,7 @@ private String getMonthName(int monthNumber) {
     private void downloadBarGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBarGraphActionPerformed
 try {
     // Read sales data
-    List<Sale> sales = SalesReport.readSalesFile("DAILY.txt");
+    List<Sale> sales = SalesReport.readSalesFile("src/Databases/DAILY.txt");
     Map<String, Double> dailySales = SalesAggregator.getDailySales(sales);
 
     // Create the graph panel
