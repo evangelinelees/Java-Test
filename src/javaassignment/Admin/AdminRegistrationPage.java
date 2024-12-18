@@ -294,7 +294,7 @@ public class AdminRegistrationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_PNumber_TFActionPerformed
 
     private void Back_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_ButtonActionPerformed
-        AdminMainPage AMP = new AdminMainPage();
+        AdminMainPage AMP = new AdminMainPage(loggedInUser);
         AMP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Back_ButtonActionPerformed

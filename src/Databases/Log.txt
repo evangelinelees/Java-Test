@@ -1,7 +1,27 @@
-1 | null | New user created | SUCCESS
-2 | admin | New user created | SUCCESS
-3 | admin | User updated | SUCCESS
-4 | SM8175 | Submitted daily report | SUCCESS
 
-admin | Submitted daily report | SUCCESS
-admin | Submitted daily report | SUCCESS
+2 | admin | New user created | SUCCESS
+3 | admin | Item created | SUCCESS
+4 | admin | Item updated | SUCCESS
+5 | admin | Item deleted | SUCCESS
+6 | admin | Item created | SUCCESS
+7 | admin | Item updated | SUCCESS
+8 | admin | Item deleted | SUCCESS
+9 | null | Item deleted | SUCCESS
+10 | admin | Item created | SUCCESS
+11 | admin | Item updated | SUCCESS
+12 | admin | Item deleted | SUCCESS
+13 | null | Item deleted | SUCCESS
+14 | admin | Item created | SUCCESS
+15 | admin | Item updated | SUCCESS
+16 | admin | Item deleted | SUCCESS
+17 | null | Supplier created | SUCCESS
+18 | null | Supplier created | SUCCESS
+19 | null | Supplier created | SUCCESS
+20 | null | Supplier created | SUCCESS
+21 | null | Supplier updated | SUCCESS
+22 | null | Supplier updated | SUCCESS
+23 | null | Supplier deleted | SUCCESS
+24 | null | Supplier deleted | SUCCESS
+25 | admin | Item created | SUCCESS
+26 | admin | Item updated | SUCCESS
+27 | admin | Item deleted | SUCCESS

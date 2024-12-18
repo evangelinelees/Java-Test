@@ -9,8 +9,10 @@ package javaassignment.InventoryManager.Forms;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -213,18 +215,31 @@ public final class ItemInputForm extends JPanel {
     supplierSelection.setSupplierNames(supplierNames);
     }
     
-    public void writeToLog(String uniqueId, String description, String status) {
+    public void writeToLog(String loggedInUser, String description, String status) {
         try {
-            File logFilePath = new File("src/Databases/Log.txt");
+                File logFilePath = new File("src/Databases/Log.txt");
+                int counter = 1;
 
-            // Create log.txt if it doesn't exist
-            if (!logFilePath.exists()) {
-                logFilePath.createNewFile();
+                // Create log.txt if it doesn't exist
+                if (!logFilePath.exists()) {
+                    logFilePath.createNewFile();
             }
+
+            // Read existing log entries and calculate the counter
+            try (BufferedReader reader = new BufferedReader(new FileReader(logFilePath))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    counter++;  // Increment the counter for each existing line
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading log file: " + e.getMessage());
+            }
+
+            // Prepare the log entry with the counter
+            String logEntry = counter + " | "+ loggedInUser + description + status;
 
             // Append log entry
             try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                String logEntry = uniqueId + description  + status;
                 logWriter.write(logEntry);
                 logWriter.newLine();
             }
@@ -387,15 +402,19 @@ public final class ItemInputForm extends JPanel {
     private void customizeSaveButton(String text) {
         universalButton1.setText(text);
         System.out.println(loggedInUser);
-        writeToLog(loggedInUser," | Submitted daily report | ","SUCCESS");
+        writeToLog(loggedInUser," | Item created | ","SUCCESS");
     }      
     
     private void customizeUpdateButton(String text) {
         universalButton2.setText(text);
+        System.out.println(loggedInUser);
+        writeToLog(loggedInUser," | Item updated | ","SUCCESS");
     } 
     
     private void customizeDeleteButton(String text) {
         universalButton3.setText(text);
+        System.out.println(loggedInUser);
+        writeToLog(loggedInUser," | Item deleted | ","SUCCESS");
     }
     
     private void addListeners() {

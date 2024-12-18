@@ -273,14 +273,13 @@ public class AdminMainPage extends javax.swing.JFrame {
 
     private void RegisterBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBTNActionPerformed
         AdminRegistrationPage RP = new AdminRegistrationPage(loggedInUser);
-
         RP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RegisterBTNActionPerformed
 
     public void loadLogFile() {
         // Define the file path for the log file
-        File logFile = new File("src/Databases/log.txt");
+        File logFile = new File("src/Databases/Log.txt");
 
         // Create a model for the notification table
         DefaultTableModel model = (DefaultTableModel) notificationTable.getModel();
