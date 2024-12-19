@@ -17,3 +17,10 @@ IM8843|jenn|01928736455|asd@gmail.com|0918273645|asd|Inventory Manager
 IM5904|nug|dfggf|email@gmail.com|0125759277a|123|Inventory Manager
 admin|jenn|0987654312|admin@gmail.com|01112343334|Admin
 SM4751|Abdul Rahman|19970909141078|email@gmail.com|0197482955|123|Sales Manager
+SM2914|sdas|1234567890|a@gmail.com|1234567890|asd|Sales Manager
+SM3134|test|1234567675432|a@gmail.com|1234567899|123|Sales Manager
+SM579|testing|12345671241351352|a@gmail.com|1234567899|123|Sales Manager
+SM9688|chupapi|123456798765412563|a@gmail.com|1234567890|123|Sales Manager
+SM4327|atdfafsa|1563484e54345675|a@gmail.com|21234567890|132|Sales Manager
+SM7843|public|12312312321312|a@gmail.com|1234567890|123|Sales Manager
+SM6784|asd|123456789087654|a@hmail.com|1234567890|123|Sales Manager

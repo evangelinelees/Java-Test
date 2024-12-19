@@ -1,3 +1,4 @@
+
 package javaassignment.Admin;
 
 import java.io.BufferedReader;
@@ -28,7 +29,6 @@ public class AdminMainPage extends javax.swing.JFrame {
         this.loggedInUser = loggedInUser;
         System.out.println(loggedInUser);
         loadLogFile();
-        
     }
     
     public AdminMainPage() {
