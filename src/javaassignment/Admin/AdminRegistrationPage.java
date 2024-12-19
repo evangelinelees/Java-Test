@@ -12,17 +12,12 @@ public class AdminRegistrationPage extends javax.swing.JFrame {
     public AdminRegistrationPage(String loggedInUser) {
         initComponents();
         this.loggedInUser = loggedInUser;
-        //sessionUser.setText(loggedInUser);
     }
     
     public AdminRegistrationPage() {
-        initComponents();
         
     }
     
-   
-
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -276,7 +276,7 @@ public class EditUser extends javax.swing.JFrame {
     }//GEN-LAST:event_Save_BTNActionPerformed
 
     private void Back_BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_BTNActionPerformed
-        UsersList UL = new UsersList();
+        UsersList UL = new UsersList(loggedInUser);
         UL.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Back_BTNActionPerformed

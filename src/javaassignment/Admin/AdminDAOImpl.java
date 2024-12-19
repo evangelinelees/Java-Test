@@ -16,7 +16,6 @@ public class AdminDAOImpl implements AdminDAO {
     private final String filePath = "src/Databases/USERS.txt";
     private String loggedInUser;
     
-    
 
     @Override
     public boolean validateLogin(String id, String password) {
@@ -260,7 +259,7 @@ public class AdminDAOImpl implements AdminDAO {
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());
     }
-}
+ }
 }
     
 
