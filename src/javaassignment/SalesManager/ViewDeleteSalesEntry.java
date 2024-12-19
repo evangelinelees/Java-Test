@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author vroom
  */
 public class ViewDeleteSalesEntry extends javax.swing.JFrame {
-    private String loggedInUser;
+    public String loggedInUser;
     /**
      * Creates new form EditDailySalesEntry
      */

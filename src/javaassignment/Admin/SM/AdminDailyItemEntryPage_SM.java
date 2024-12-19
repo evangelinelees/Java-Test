@@ -31,7 +31,7 @@ public class AdminDailyItemEntryPage_SM extends javax.swing.JFrame {
     private final ItemsDAO itemsDAO;
     private int selectedItemInitialQuantity;
     private double selectedItemPrice;
-    private String loggedInUser;
+    public String loggedInUser;
 
     /**
      * Creates new form DailyItemEntryPage

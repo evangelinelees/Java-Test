@@ -12,7 +12,7 @@ import javaassignment.LoginPage;
  * @author vroom
  */
 public class AdminSMPage extends javax.swing.JFrame {
-    private String loggedInUser;
+    public String loggedInUser;
 
     /**
      * Creates new form SalesManagerMainPage

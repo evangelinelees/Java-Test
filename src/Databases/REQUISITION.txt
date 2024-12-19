@@ -4,3 +4,6 @@ ITEM003|Refrigerator|2|30|PM8484
 ITEM003|Refrigerator|2|30|PM8484
 ITEM002|Phone|11|200|SM2663
 ITEM003|Refrigerator|2|200|SM2663
+ITEM003|Refrigerator|0|12|SM3772
+ITEM003|Refrigerator|-1|120|SM5336
+ITEM001|Laptop|14|45|admin

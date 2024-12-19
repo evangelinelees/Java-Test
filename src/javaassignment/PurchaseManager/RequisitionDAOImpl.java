@@ -15,11 +15,11 @@ import java.util.List;
 
 
 public class RequisitionDAOImpl implements RequisitionDAO {
-    private final String requisitionFilePath = "C:\\JAVA\\JavaAssignment\\src\\Databases\\REQUISITION.txt";
+    private final String requisitionFilePath = "src/Databases/REQUISITION.txt";
     
 
-    public boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId, String ADMIN_ID) {
-        String reqDetails = itemCode + "|" + itemName + "|" + currentQuantity + "|" + proposedQuantity + "|" + userId;
+    public boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId) {
+            String reqDetails = itemCode + "|" + itemName + "|" + currentQuantity + "|" + proposedQuantity + "|" + userId;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(requisitionFilePath, true))) {
             writer.write(reqDetails);
             writer.newLine();
@@ -28,10 +28,12 @@ public class RequisitionDAOImpl implements RequisitionDAO {
             return false;
         }
     }
+    }
+
+
     
     
-    
-}
+
 
     
 
