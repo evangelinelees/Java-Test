@@ -4,6 +4,7 @@
  */
 package javaassignment.SalesManager;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,8 @@ public String loggedInUser;
         initComponents();
         loadItemsToTable();
         this.loggedInUser = loggedInUser;
+        jTextArea1.setEnabled(false);
+        jTextArea1.setDisabledTextColor(Color.BLACK);
     }
     
     

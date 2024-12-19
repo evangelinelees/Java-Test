@@ -427,6 +427,7 @@ public class AdminViewDeleteSalesEntry extends javax.swing.JFrame {
                 
             }
             writeToLog(loggedInUser," | Sales entry deleted | ","SUCCESS");
+            javax.swing.JOptionPane.showMessageDialog(this, "Sales entry deleted successfully!");
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error updating file.");

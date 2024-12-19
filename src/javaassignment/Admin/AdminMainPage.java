@@ -27,6 +27,7 @@ public class AdminMainPage extends javax.swing.JFrame {
         initComponents();
         this.loggedInUser = loggedInUser;
         System.out.println(loggedInUser);
+        loadLogFile();
         
     }
     
