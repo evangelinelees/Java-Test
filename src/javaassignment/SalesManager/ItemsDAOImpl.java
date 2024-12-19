@@ -15,7 +15,7 @@ import java.util.List;
  * @author vroom
  */
 public class ItemsDAOImpl implements ItemsDAO {
-    private final String filePath = "src\\Databases\\ITEMS.txt";
+    private final String filePath = "src/Databases/ITEMS.txt";
     
     
 public List<Items> viewItems() {

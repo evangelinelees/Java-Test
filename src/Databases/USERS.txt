@@ -15,3 +15,4 @@ PM5144|asd|123123123131231|asd@mai./com|1234567890|123|Purchase Manager
 SM3772|trolling|172t34017540-91274601|123@maillcom|1231231233|123|Sales Manager
 IM8843|jenn|01928736455|asd@gmail.com|0918273645|asd|Inventory Manager
 IM5904|nug|dfggf|email@gmail.com|0125759277a|123|Inventory Manager
+admin|jenn|0987654312|admin@gmail.com|01112343334|Admin

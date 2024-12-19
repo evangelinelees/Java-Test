@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ViewItemCreateReq_SM extends javax.swing.JFrame {
     private final ItemsDAO itemsDAO;
-    private String loggedInUser;
+    public String loggedInUser;
     /**
      * Creates new form ViewSalesItemPage_SM
      */
@@ -356,7 +356,7 @@ public class ViewItemCreateReq_SM extends javax.swing.JFrame {
 
         // Save requisition using DAO
         RequisitionDAOImpl requisitionDAO = new RequisitionDAOImpl();
-        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId, ADMIN_ID);
+        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId);
         if (success) {
             JOptionPane.showMessageDialog(null, "Requisition submitted successfully.");
             writeToLog(loggedInUser," | Requisition created | ","SUCCESS");

@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class AdminViewItemCreateReq_SM extends javax.swing.JFrame {
 private final ItemsDAO itemsDAO;
-private String loggedInUser;
+public String loggedInUser;
     /**
      * Creates new form ViewSalesItemPage_SM
      */
@@ -327,7 +327,7 @@ private String loggedInUser;
     String currentQuantity = CurrentQuantityField.getText();
     String proposedQuantity = ProposedQuantityField.getText();
     String userId = UserIDField.getText();
-    String ADMIN_ID = UserIDField.getText();
+   
     
 
     if (itemCode.isEmpty() || itemName.isEmpty() || currentQuantity.isEmpty() || proposedQuantity.isEmpty() || userId.isEmpty()) {
@@ -344,10 +344,19 @@ private String loggedInUser;
 
     try {
         AdminDAO adminDAO = new AdminDAOImpl();
-        User user = adminDAO.getUserById(userId);
-        if (user == null) {
-            JOptionPane.showMessageDialog(this, "Invalid UserID. Please enter a valid UserID.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        
+        if ("admin".equalsIgnoreCase(userId)) {
+            // You can create a default "admin" user object if needed
+            User user = new User(); // Assuming a User constructor exists
+            user.setUserId("admin");
+        } else {
+            // Validate user ID using the database
+            User user = adminDAO.getUserById(userId);
+
+            if (user == null) {
+                JOptionPane.showMessageDialog(this, "Invalid UserID. Please enter a valid UserID.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
 
         // Create a Requisition object
@@ -355,7 +364,7 @@ private String loggedInUser;
 
         // Save requisition using DAO
         RequisitionDAOImpl requisitionDAO = new RequisitionDAOImpl();
-        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId, ADMIN_ID);
+        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId);
         if (success) {
             JOptionPane.showMessageDialog(null, "Requisition submitted successfully.");
             writeToLog(loggedInUser," | Requisition created | ","SUCCESS");

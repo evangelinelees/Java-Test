@@ -27,7 +27,7 @@ public class DailyItemEntryPage_SM extends javax.swing.JFrame {
     private final ItemsDAO itemsDAO;
     private int selectedItemInitialQuantity;
     private double selectedItemPrice;
-    private String loggedInUser;
+    public String loggedInUser;
     
 
     /**
