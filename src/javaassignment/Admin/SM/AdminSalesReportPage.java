@@ -4,6 +4,7 @@
  */
 package javaassignment.Admin.SM;
 
+import java.awt.Color;
 import javaassignment.SalesManager.*;
 import java.awt.Dimension;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class AdminSalesReportPage extends javax.swing.JFrame {
         initComponents();
         loadItemsToTable();
         this.loggedInUser = loggedInUser;
+        jTextArea1.setEnabled(false);
+        jTextArea1.setDisabledTextColor(Color.BLACK);
     }
     
     public AdminSalesReportPage() {

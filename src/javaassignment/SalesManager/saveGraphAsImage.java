@@ -26,7 +26,7 @@ public static void saveGraphAsImage(GraphPanel graphPanel, String filePath) {
     g2d.dispose();
 
     try {
-        ImageIO.write(image, "png", new File("output/barGraph.png"));
+        ImageIO.write(image, "png", new File("C:/barGraph.png"));
         
     } catch (Exception e) {
         e.printStackTrace();

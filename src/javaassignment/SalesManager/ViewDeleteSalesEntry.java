@@ -403,12 +403,11 @@ public class ViewDeleteSalesEntry extends javax.swing.JFrame {
     }//GEN-LAST:event_calendarSearchActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        int selectedRow = dailyTable.getSelectedRow();
+    int selectedRow = dailyTable.getSelectedRow();
     if (selectedRow != -1) {
         DefaultTableModel tableModel = (DefaultTableModel) dailyTable.getModel();
-        tableModel.removeRow(selectedRow); // Remove from the table
+        tableModel.removeRow(selectedRow); 
 
-        // Update the file by rewriting its contents
         try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("src/Databases/DAILY.txt"))) {
             for (int i = 0; i < tableModel.getRowCount(); i++) {
                 writer.write(
@@ -421,8 +420,9 @@ public class ViewDeleteSalesEntry extends javax.swing.JFrame {
                     tableModel.getValueAt(i, 6)
                 );
                 writer.newLine();
-                writeToLog(loggedInUser," | Sales entry deleted | ","SUCCESS");
             }
+            writeToLog(loggedInUser, " | Sales entry deleted | ", "SUCCESS");
+            javax.swing.JOptionPane.showMessageDialog(this, "Sales entry deleted successfully!");
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error updating file.");
