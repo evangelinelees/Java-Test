@@ -18,8 +18,7 @@ public class ItemsDAOImpl implements ItemsDAO {
     private final String filePath = "src/Databases/ITEMS.txt";
     
     
-    @Override
-    public List<Items> viewItems() {
+public List<Items> viewItems() {
     List<Items> items = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
         String line;
