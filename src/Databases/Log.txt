@@ -1,13 +1,9 @@
-    
-2 | admin | Requisition created | SUCCESS
-3 | admin | Submitted daily report | SUCCESS
-4 | admin | Sales entry deleted | SUCCESS
-5 | admin | Requisition created | SUCCESS
-6 | admin | Requisition created | SUCCESS
-7 | null | New user created | SUCCESS
-8 | null | New user created | SUCCESS
-9 | null | New user created | SUCCESS
-10 | admin | New user created | SUCCESS
-11 | null | New user created | SUCCESS
-12 | null | New user created | SUCCESS
-13 | admin | New user created | SUCCESS
+1 | admin | New user created | SUCCESS
+2 | admin | User updated | SUCCESS
+3 | admin | User deleted | SUCCESS
+4 | admin | Item created | SUCCESS
+5 | admin | Item updated | SUCCESS
+6 | admin | Item deleted | SUCCESS
+7 | admin | Requisition created | SUCCESS
+8 | admin | Submitted daily report | SUCCESS
+9 | admin | Sales entry deleted | SUCCESS
