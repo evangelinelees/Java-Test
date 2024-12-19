@@ -4,8 +4,10 @@
  */
 package javaassignment.Admin.SM;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javaassignment.SalesManager.*;
@@ -369,9 +371,9 @@ public class AdminViewDeleteSalesEntry extends javax.swing.JFrame {
     }//GEN-LAST:event_grossProfitActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-       AdminSMPage SMP = new AdminSMPage(loggedInUser);
-       SMP.setVisible(true);
-       this.dispose();
+        AdminSMPage SMP = new AdminSMPage(loggedInUser);
+        SMP.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void dailyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dailyTableMouseClicked
@@ -439,18 +441,31 @@ public class AdminViewDeleteSalesEntry extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshTableBtnActionPerformed
 
     
-    public void writeToLog(String uniqueId, String description, String status) {
+    public void writeToLog(String loggedInUser, String description, String status) {
         try {
-            File logFilePath = new File("src/Databases/log.txt");
+                File logFilePath = new File("src/Databases/Log.txt");
+                int counter = 1;
 
-            // Create log.txt if it doesn't exist
-            if (!logFilePath.exists()) {
-                logFilePath.createNewFile();
+                // Create log.txt if it doesn't exist
+                if (!logFilePath.exists()) {
+                    logFilePath.createNewFile();
             }
+
+            // Read existing log entries and calculate the counter
+            try (BufferedReader reader = new BufferedReader(new FileReader(logFilePath))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    counter++;  // Increment the counter for each existing line
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading log file: " + e.getMessage());
+            }
+
+            // Prepare the log entry with the counter
+            String logEntry = counter + " | "+ loggedInUser + description + status;
 
             // Append log entry
             try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                String logEntry = uniqueId  + description  + status;
                 logWriter.write(logEntry);
                 logWriter.newLine();
             }

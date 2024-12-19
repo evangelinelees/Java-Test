@@ -257,8 +257,6 @@ public class AdminMainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_FinanceBTNActionPerformed
 
     private void InventoryBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventoryBTNActionPerformed
-        System.out.println("Inventory Button Clicked!");
-        
         AdminIMPage AIP = new AdminIMPage(loggedInUser);
         AIP.setVisible(true);
         this.dispose();  // Close the current window

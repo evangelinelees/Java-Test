@@ -402,19 +402,16 @@ public final class ItemInputForm extends JPanel {
     private void customizeSaveButton(String text) {
         universalButton1.setText(text);
         System.out.println(loggedInUser);
-        writeToLog(loggedInUser," | Item created | ","SUCCESS");
     }      
     
     private void customizeUpdateButton(String text) {
         universalButton2.setText(text);
         System.out.println(loggedInUser);
-        writeToLog(loggedInUser," | Item updated | ","SUCCESS");
     } 
     
     private void customizeDeleteButton(String text) {
         universalButton3.setText(text);
         System.out.println(loggedInUser);
-        writeToLog(loggedInUser," | Item deleted | ","SUCCESS");
     }
     
     private void addListeners() {
@@ -422,6 +419,7 @@ public final class ItemInputForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveItem();
+                writeToLog(loggedInUser," | Item created | ","SUCCESS");
                 loadItems();
             }
         });
@@ -430,6 +428,7 @@ public final class ItemInputForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateItem();
+                writeToLog(loggedInUser," | Item updated | ","SUCCESS");
                 loadItems();
             }
         });
@@ -438,6 +437,7 @@ public final class ItemInputForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteItem();
+                writeToLog(loggedInUser," | Item deleted | ","SUCCESS");
                 loadItems();
             }
         });

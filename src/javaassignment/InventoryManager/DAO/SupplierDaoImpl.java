@@ -27,13 +27,19 @@ public class SupplierDaoImpl implements SupplierDao{
    private final String logFilePath = "src/Databases/Log.txt";
    private String loggedInUser;
 
-  
+   public SupplierDaoImpl(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+   
+   public SupplierDaoImpl() {
+        
+    }
 
    
     public void addSupplier(Supplier supplier) {
         // Add supplier to the list
         supplierList.add(supplier);
-        writeToLog(loggedInUser," | Supplier added | ","SUCCESS");
+        
 
         // Write supplier to the file
         writeToFile(supplier);
@@ -78,7 +84,6 @@ public class SupplierDaoImpl implements SupplierDao{
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             writer.write(supplierToString(supplier));
             writer.newLine();
-            writeToLog(loggedInUser," | Supplier created | ","SUCCESS");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,7 +104,6 @@ public class SupplierDaoImpl implements SupplierDao{
 
         if (updated) {
             saveAll(suppliers); // Save updated list
-            writeToLog(loggedInUser," | Supplier updated | ","SUCCESS");
         } else {
             System.out.println("Supplier with ID " + supplier.getSupplierId() + " not found for update.");
         }
@@ -111,7 +115,6 @@ public class SupplierDaoImpl implements SupplierDao{
 
         if (removed) {
             saveAll(suppliers);
-            writeToLog(loggedInUser," | Supplier deleted | ","SUCCESS");
         } else {
             System.out.println("Supplier with ID " + supplierId + " not found.");
         }
@@ -204,7 +207,7 @@ public class SupplierDaoImpl implements SupplierDao{
     
    @Override
     public void writeToLog(String uniqueId, String description, String status) {
-        
+  
         try {
                 File logFilePath = new File("src/Databases/Log.txt");
                 int counter = 1;

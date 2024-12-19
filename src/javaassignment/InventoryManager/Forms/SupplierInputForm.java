@@ -33,13 +33,15 @@ public class SupplierInputForm extends javax.swing.JPanel {
     
     public void SupplierInputForm() {
         initComponents();
-        this.loggedInUser = loggedInUser;
+        
     }
 
-    public SupplierInputForm(SupplierController supplierController,SupplierInputPanel supplierInputPanel, SupplierDao supplierDao) {
+    public SupplierInputForm(SupplierController supplierController,SupplierInputPanel supplierInputPanel, SupplierDao supplierDao, String loggedInUser) {
+        this.loggedInUser = loggedInUser;
         this.supplierController = supplierController;
         this.supplierInputPanel1 = supplierInputPanel; 
         this.inputValidator = new DataHandling(supplierDao);
+        System.out.println(loggedInUser);
         initComponents();
         refreshSupplierTable();
         loadSupplier(); 
@@ -91,7 +93,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
 
         // Optionally update the supplier input panel or table with the new supplier
         supplierInputPanel1.addSupplier(supplierId, name, address, email, phone);
-        writeToLog(loggedInUser," | Supplier created | ","SUCCESS");
+        
 
         // Clear the fields after saving
         clearFields();
@@ -131,7 +133,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
         */ 
         // Call the controller to update the supplier
         supplierController.updateSupplier(supplierId, name, address, phone, email);
-        writeToLog(loggedInUser," | Supplier updated | ","SUCCESS");
+        
 
         // Reload the suppliers and refresh the UI
         loadSupplier();
@@ -148,7 +150,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
 
             // Remove the supplier from the service
             supplierController.deleteSupplier(supplierId); // Assuming this method exists
-            writeToLog(loggedInUser," | Supplier deleted | ","SUCCESS");
+            
 
             // Clear the supplier input panel or table
             supplierInputPanel1.clearSupplier();
@@ -174,7 +176,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
         supplierInputPanel1.populateSupplier(suppliers);
     }
     
-    public void writeToLog(String uniqueId, String description, String status) {
+    public void writeToLog(String loggedInUser, String description, String status) {
         try {
                 File logFilePath = new File("src/Databases/Log.txt");
                 int counter = 1;
@@ -354,14 +356,20 @@ public class SupplierInputForm extends javax.swing.JPanel {
     
     private void customizeSaveButton(String text) {
         universalButton1.setText(text);
+        System.out.println(loggedInUser);
+        
     }      
     
     private void customizeUpdateButton(String text) {
         universalButton2.setText(text);
+        System.out.println(loggedInUser);
+        
     } 
     
     private void customizeDeleteButton(String text) {
         universalButton3.setText(text);
+        System.out.println(loggedInUser);
+        
     }   
     
     private void addListeners() {
@@ -369,6 +377,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveSupplier();
+                writeToLog(loggedInUser," | Supplier created | ","SUCCESS");
                 loadSupplier();
             }
         });
@@ -376,7 +385,8 @@ public class SupplierInputForm extends javax.swing.JPanel {
         universalButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateSupplier();
+                updateSupplier();              
+                writeToLog(loggedInUser," | Supplier updated | ","SUCCESS");
                 loadSupplier();
             }
         });
@@ -385,6 +395,7 @@ public class SupplierInputForm extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteSupplier();
+                writeToLog(loggedInUser," | Supplier deleted | ","SUCCESS");
                 loadSupplier();
             }
         });

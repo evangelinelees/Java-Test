@@ -1,2 +1,4 @@
 S0004|Fast|Soap Road|0128250398|as@gmail.com
 S0005|young and rich|nigga wut|0123456789|nig@gmail.com
+S0006|young and rich|nigga wut|nig@gmail.com|0123456789
+S0007|young and rich|nigga wut|0123456789|nig@gmail.com

@@ -9,5 +9,5 @@ package javaassignment.PurchaseManager;
  * @author vroom
  */
 public interface RequisitionDAO {
-    boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId);
+    boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId, String ADMIN_ID);
 }

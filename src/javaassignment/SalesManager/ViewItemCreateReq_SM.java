@@ -329,6 +329,7 @@ public class ViewItemCreateReq_SM extends javax.swing.JFrame {
     String currentQuantity = CurrentQuantityField.getText();
     String proposedQuantity = ProposedQuantityField.getText();
     String userId = UserIDField.getText();
+    String ADMIN_ID = UserIDField.getText();
 
     if (itemCode.isEmpty() || itemName.isEmpty() || currentQuantity.isEmpty() || proposedQuantity.isEmpty() || userId.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -355,7 +356,7 @@ public class ViewItemCreateReq_SM extends javax.swing.JFrame {
 
         // Save requisition using DAO
         RequisitionDAOImpl requisitionDAO = new RequisitionDAOImpl();
-        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId);
+        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId, ADMIN_ID);
         if (success) {
             JOptionPane.showMessageDialog(null, "Requisition submitted successfully.");
             writeToLog(loggedInUser," | Requisition created | ","SUCCESS");
