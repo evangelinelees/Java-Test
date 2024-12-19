@@ -64,7 +64,7 @@ public class Main extends javax.swing.JFrame {
                     case 1 -> {
                         yield switch (subIndex) {
                             case 0 -> new SupplierForm(); // Inventory form
-                            case 1 -> new SupplierInputForm(supplierController, supplierInputPanel, supplierDao); // Open Item Input Form
+                            case 1 -> new SupplierInputForm(supplierController, supplierInputPanel, supplierDao, loggedInUser); // Open Item Input Form
                             default -> new DefaultForm("Inventory Form: " + subIndex);
                         };
                     }

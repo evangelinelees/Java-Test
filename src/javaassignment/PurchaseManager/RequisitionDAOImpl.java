@@ -18,7 +18,7 @@ public class RequisitionDAOImpl implements RequisitionDAO {
     private final String requisitionFilePath = "C:\\JAVA\\JavaAssignment\\src\\Databases\\REQUISITION.txt";
     
 
-    public boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId) {
+    public boolean saveRequisition(String itemCode, String itemName, String currentQuantity, String proposedQuantity, String userId, String ADMIN_ID) {
         String reqDetails = itemCode + "|" + itemName + "|" + currentQuantity + "|" + proposedQuantity + "|" + userId;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(requisitionFilePath, true))) {
             writer.write(reqDetails);

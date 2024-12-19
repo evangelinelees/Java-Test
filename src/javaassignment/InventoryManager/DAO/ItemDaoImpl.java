@@ -191,7 +191,6 @@ public class ItemDaoImpl implements ItemDao {
 
             if (itemRemoved) {
                 saveAll(items);
-                writeToLog(loggedInUser," | Item deleted | ","SUCCESS");
             } 
                 else {
                 System.out.println("Item with ID " + itemId + " not found.");

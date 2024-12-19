@@ -4,8 +4,10 @@
  */
 package javaassignment.Admin.SM;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javaassignment.SalesManager.*;
@@ -45,7 +47,7 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
     private void loadItemsToTable() {
     try {
         // Path to the DAILY.txt file
-        String filePath = "src/Databases/DAILY.txt";  // Replace with the actual path to your file
+        String filePath = "src/Databases/DAILY.txt";  
         // Get the table model
         try ( // Open the file for reading
                 java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filePath))) {
@@ -108,12 +110,12 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
         tableModel.setRowCount(0);
 
         // Reload the data from file
-        String filePath = "DAILY.txt";  // Path to your file
+        String filePath = "src/Databases/DAILY.txt";  
         try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filePath))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                // Assuming the file contains | delimited values: date|itemCode|itemName|price|quantitySold|loss|grossProfit
+                
                 String[] data = line.split("\\|");
 
                 if (data.length == 7) {
@@ -144,7 +146,6 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(this, "Error reading the file.");
     }
 }
-    
 
     
     
@@ -184,6 +185,7 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
         yearField = new javax.swing.JTextField();
         calendarSearch = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        refreshTableBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -303,21 +305,30 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
         jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 100, -1));
 
         monthField.setText("MM");
-        jPanel1.add(monthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        jPanel1.add(monthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, 30));
 
         yearField.setText("YYYY");
-        jPanel1.add(yearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
+        jPanel1.add(yearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, 30));
 
+        calendarSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         calendarSearch.setText("Search");
         calendarSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calendarSearchActionPerformed(evt);
             }
         });
-        jPanel1.add(calendarSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+        jPanel1.add(calendarSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 30));
 
         jLabel4.setText("Make sure both fields are filled before searching.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 270, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 280, -1));
+
+        refreshTableBtn.setText("Refresh Table");
+        refreshTableBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshTableBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(refreshTableBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,6 +347,25 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dailyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dailyTableMouseClicked
+// Get the selected row index
+    int selectedRow = dailyTable.getSelectedRow();
+
+    if (selectedRow != -1) { // Ensure a row is selected
+        DefaultTableModel tableModel = (DefaultTableModel) dailyTable.getModel();
+
+        // Populate text fields with data from the selected row
+        dateField.setText(tableModel.getValueAt(selectedRow, 0).toString());
+        itemCode.setText(tableModel.getValueAt(selectedRow, 1).toString());
+        itemName.setText(tableModel.getValueAt(selectedRow, 2).toString());
+        price.setText(tableModel.getValueAt(selectedRow, 3).toString());
+        quantitySold.setText(tableModel.getValueAt(selectedRow, 4).toString());
+        lossesField.setText(tableModel.getValueAt(selectedRow, 5).toString());
+        grossProfit.setText(tableModel.getValueAt(selectedRow, 6).toString());
+        }
+
+    }//GEN-LAST:event_dailyTableMouseClicked
 
     private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFieldActionPerformed
 
@@ -357,41 +387,6 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_grossProfitActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        AdminSMPage SMP = new AdminSMPage(loggedInUser);
-        SMP.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void dailyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dailyTableMouseClicked
-    // Get the selected row index
-    int selectedRow = dailyTable.getSelectedRow();
-
-    if (selectedRow != -1) { // Ensure a row is selected
-        DefaultTableModel tableModel = (DefaultTableModel) dailyTable.getModel();
-
-        // Populate text fields with data from the selected row
-        dateField.setText(tableModel.getValueAt(selectedRow, 0).toString());
-        itemCode.setText(tableModel.getValueAt(selectedRow, 1).toString());
-        itemName.setText(tableModel.getValueAt(selectedRow, 2).toString());
-        price.setText(tableModel.getValueAt(selectedRow, 3).toString());
-        quantitySold.setText(tableModel.getValueAt(selectedRow, 4).toString());
-        lossesField.setText(tableModel.getValueAt(selectedRow, 5).toString());
-        grossProfit.setText(tableModel.getValueAt(selectedRow, 6).toString());
-    }
-
-
-
-    }//GEN-LAST:event_dailyTableMouseClicked
-
-    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceActionPerformed
-
-    private void calendarSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSearchActionPerformed
-        filterTableByMonthYear();
-    }//GEN-LAST:event_calendarSearchActionPerformed
-
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         int selectedRow = dailyTable.getSelectedRow();
     if (selectedRow != -1) {
@@ -411,8 +406,9 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
                     tableModel.getValueAt(i, 6)
                 );
                 writer.newLine();
+                
             }
-            writeToLog(loggedInUser," | Sales record deleted | ","SUCCESS");
+            writeToLog(loggedInUser," | Sales entry deleted | ","SUCCESS");
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error updating file.");
@@ -422,18 +418,49 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    public void writeToLog(String uniqueId, String description, String status) {
-        try {
-            File logFilePath = new File("src/Databases/log.txt");
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        AdminSMPage SMP = new AdminSMPage(loggedInUser);
+        SMP.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
-            // Create log.txt if it doesn't exist
-            if (!logFilePath.exists()) {
-                logFilePath.createNewFile();
+    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceActionPerformed
+
+    private void calendarSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSearchActionPerformed
+        filterTableByMonthYear();
+    }//GEN-LAST:event_calendarSearchActionPerformed
+
+    private void refreshTableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableBtnActionPerformed
+        loadItemsToTable();
+    }//GEN-LAST:event_refreshTableBtnActionPerformed
+
+   public void writeToLog(String loggedInUser, String description, String status) {
+        try {
+                File logFilePath = new File("src/Databases/Log.txt");
+                int counter = 1;
+
+                // Create log.txt if it doesn't exist
+                if (!logFilePath.exists()) {
+                    logFilePath.createNewFile();
             }
+
+            // Read existing log entries and calculate the counter
+            try (BufferedReader reader = new BufferedReader(new FileReader(logFilePath))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    counter++;  // Increment the counter for each existing line
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading log file: " + e.getMessage());
+            }
+
+            // Prepare the log entry with the counter
+            String logEntry = counter + " | "+ loggedInUser + description + status;
 
             // Append log entry
             try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                String logEntry = uniqueId  + description  + status;
                 logWriter.write(logEntry);
                 logWriter.newLine();
             }
@@ -509,6 +536,7 @@ public class AdminDeleteDailySalesEntry extends javax.swing.JFrame {
     private javax.swing.JTextField monthField;
     private javax.swing.JTextField price;
     private javax.swing.JTextField quantitySold;
+    private javax.swing.JButton refreshTableBtn;
     private javax.swing.JTextField yearField;
     // End of variables declaration//GEN-END:variables
 }

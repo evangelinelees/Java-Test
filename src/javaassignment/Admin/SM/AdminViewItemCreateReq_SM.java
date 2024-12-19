@@ -2,8 +2,10 @@ package javaassignment.Admin.SM;
 
 
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javaassignment.SalesManager.*;
@@ -35,11 +37,18 @@ private String loggedInUser;
         this.itemsDAO = new ItemsDAOImpl();
         
         
-        
+        clearFields();
         loadItemsToTable();
     }
     public AdminViewItemCreateReq_SM(){
         this.itemsDAO = null;
+        initComponents();
+        
+    }
+    
+    private void clearFields() {
+        ProposedQuantityField.setText("");
+        UserIDField.setText("");
         
     }
             
@@ -88,7 +97,6 @@ private String loggedInUser;
         });
     }
 }
-
 
 
 
@@ -308,9 +316,9 @@ private String loggedInUser;
 
     
     private void BackBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTNActionPerformed
-       AdminSMPage SMP = new AdminSMPage(loggedInUser);
-       SMP.setVisible(true);
-       this.dispose();
+        AdminSMPage SMP = new AdminSMPage(loggedInUser);
+        SMP.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BackBTNActionPerformed
 
     private void SubmitRequisitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitRequisitionActionPerformed
@@ -319,9 +327,18 @@ private String loggedInUser;
     String currentQuantity = CurrentQuantityField.getText();
     String proposedQuantity = ProposedQuantityField.getText();
     String userId = UserIDField.getText();
+    String ADMIN_ID = UserIDField.getText();
+    
 
     if (itemCode.isEmpty() || itemName.isEmpty() || currentQuantity.isEmpty() || proposedQuantity.isEmpty() || userId.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        Integer.parseInt(proposedQuantity);
+    } catch (NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Proposed Quantity must be valid integer.");
         return;
     }
 
@@ -338,15 +355,17 @@ private String loggedInUser;
 
         // Save requisition using DAO
         RequisitionDAOImpl requisitionDAO = new RequisitionDAOImpl();
-        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId);
+        boolean success = requisitionDAO.saveRequisition(itemCode, itemName, currentQuantity, proposedQuantity, userId, ADMIN_ID);
         if (success) {
-            JOptionPane.showMessageDialog(this, "Requisition submitted successfully.");
+            JOptionPane.showMessageDialog(null, "Requisition submitted successfully.");
             writeToLog(loggedInUser," | Requisition created | ","SUCCESS");
         } 
     } catch (Exception e) {
         e.printStackTrace();
         JOptionPane.showMessageDialog(this, "An error occurred.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+    
+    clearFields();
     
     }//GEN-LAST:event_SubmitRequisitionActionPerformed
 
@@ -420,18 +439,31 @@ private String loggedInUser;
         // TODO add your handling code here:
     }//GEN-LAST:event_UserIDFieldActionPerformed
 
-    public void writeToLog(String uniqueId, String description, String status) {
+    public void writeToLog(String loggedInUser, String description, String status) {
         try {
-            File logFilePath = new File("src/Databases/log.txt");
+                File logFilePath = new File("src/Databases/Log.txt");
+                int counter = 1;
 
-            // Create log.txt if it doesn't exist
-            if (!logFilePath.exists()) {
-                logFilePath.createNewFile();
+                // Create log.txt if it doesn't exist
+                if (!logFilePath.exists()) {
+                    logFilePath.createNewFile();
             }
+
+            // Read existing log entries and calculate the counter
+            try (BufferedReader reader = new BufferedReader(new FileReader(logFilePath))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    counter++;  // Increment the counter for each existing line
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading log file: " + e.getMessage());
+            }
+
+            // Prepare the log entry with the counter
+            String logEntry = counter + " | "+ loggedInUser + description + status;
 
             // Append log entry
             try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                String logEntry = uniqueId  + description  + status;
                 logWriter.write(logEntry);
                 logWriter.newLine();
             }
