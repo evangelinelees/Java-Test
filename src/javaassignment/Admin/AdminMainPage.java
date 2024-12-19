@@ -1,3 +1,4 @@
+
 package javaassignment.Admin;
 
 import java.io.BufferedReader;
@@ -25,9 +26,7 @@ public class AdminMainPage extends javax.swing.JFrame {
      */
     public AdminMainPage(String loggedInUser) {
         initComponents();
-        this.loggedInUser = loggedInUser;
-        System.out.println(loggedInUser);
-        
+        this.loggedInUser = loggedInUser;        
     }
     
     public AdminMainPage() {

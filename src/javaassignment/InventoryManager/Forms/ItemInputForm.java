@@ -246,7 +246,6 @@ public final class ItemInputForm extends JPanel {
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());
         }
-        
     }
     
 
